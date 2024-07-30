@@ -1,0 +1,48 @@
+/* Style de la container pour un meilleur centrage et marge */
+.container {
+    margin-top: 20px;
+}
+
+/* Style du titre */
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+/* Style des boutons */
+.btn-success, .btn-info, .btn-primary, .btn-danger {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style des cartes */
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Style des boutons à l'intérieur des cartes */
+.card .btn {
+    margin-right: 5px;
+}

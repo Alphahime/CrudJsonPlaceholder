@@ -1,0 +1,89 @@
+/* Container Styling */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Textarea Styling */
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Error Message Styling */
+.alert {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #d9534f;
+    border-radius: 4px;
+    color: #d9534f;
+    background-color: #f9d6d5;
+}
+
+.alert-danger {
+    border-color: #d9534f;
+    color: #d9534f;
+    background-color: #f9d6d5;
+}
+
+/* Disabled Button Styling */
+.btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
