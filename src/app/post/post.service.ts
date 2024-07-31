@@ -18,27 +18,27 @@ export class PostService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(): Observable<any> {
-    return this.httpClient.get(this.apiURL + '/posts/')
+  getAll(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(this.apiURL + '/posts/')
       .pipe(catchError(this.errorHandler));
   }
 
-  create(post: Post): Observable<any> {
-    return this.httpClient.post(this.apiURL + '/posts/', JSON.stringify(post), this.httpOptions)
+  create(post: Post): Observable<Post> {
+    return this.httpClient.post<Post>(this.apiURL + '/posts/', JSON.stringify(post), this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
-  find(id: number): Observable<any> {
-    return this.httpClient.get(this.apiURL + '/posts/' + id)
+  find(id: number): Observable<Post> {
+    return this.httpClient.get<Post>(this.apiURL + '/posts/' + id)
       .pipe(catchError(this.errorHandler));
   }
 
-  update(id: number, post: Post): Observable<any> {
-    return this.httpClient.put(this.apiURL + '/posts/' + id, JSON.stringify(post), this.httpOptions)
+  update(id: number, post: Post): Observable<Post> {
+    return this.httpClient.put<Post>(this.apiURL + '/posts/' + id, JSON.stringify(post), this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
-  delete(id: number) {
+  delete(id: number): Observable<any> {
     return this.httpClient.delete(this.apiURL + '/posts/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }

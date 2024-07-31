@@ -1,48 +1,26 @@
-/* Style de la container pour un meilleur centrage et marge */
-.container {
-    margin-top: 20px;
-}
-
-/* Style du titre */
-h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-    text-align: center;
-}
-
-/* Style des boutons */
-.btn-success, .btn-info, .btn-primary, .btn-danger {
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-/* Style des cartes */
+/* styles.css */
 .card {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.card-title {
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.card-text {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #555;
-}
-
-/* Style des boutons à l'intérieur des cartes */
-.card .btn {
-    margin-right: 5px;
-}
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+  }
+  
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+  
+  .card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 0.75rem;
+  }
+  
+  .btn-sm {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+  }
+  

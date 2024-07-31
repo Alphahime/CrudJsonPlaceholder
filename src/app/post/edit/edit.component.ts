@@ -1,46 +1,63 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'; // Importation de CommonModule
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../post.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from '../post';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule] // Ajout de CommonModule ici
 })
 export class EditComponent implements OnInit {
   form!: FormGroup;
-  post!: Post;
+  postId!: number;
 
   constructor(
-    public postService: PostService,
-    private router: Router,
-    private route: ActivatedRoute
+    private fb: FormBuilder,
+    private postService: PostService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    // Récupération de l'ID du post depuis les paramètres de la route
     this.route.paramMap.subscribe(params => {
-      const id = Number(params.get('postId'));
-      this.postService.find(id).subscribe((data: Post) => {
-        this.post = data;
-        this.form = new FormGroup({
-          title: new FormControl(this.post.title, Validators.required),
-          body: new FormControl(this.post.body, Validators.required)
-        });
+      this.postId = Number(params.get('postId'));
+      this.loadPost();
+    });
+
+    // Initialisation du formulaire
+    this.form = this.fb.group({
+      title: ['', Validators.required],
+      body: ['', Validators.required]
+    });
+  }
+
+  // Chargement des données du post
+  loadPost() {
+    this.postService.find(this.postId).subscribe(post => {
+      this.form.patchValue({
+        title: post.title,
+        body: post.body
       });
     });
   }
 
-  get f() {
-    return this.form.controls;
-  }
-
+  // Méthode pour soumettre le formulaire
   submit() {
-    const id = this.post.id;
-    this.postService.update(id, this.form.value).subscribe((res: any) => {
-      console.log('Post mis à jour avec succès !');
-      this.router.navigateByUrl('post/index');
-    });
+    if (this.form.valid) {
+      const updatedPost: Post = {
+        id: this.postId,
+        ...this.form.value
+      };
+
+      this.postService.update(this.postId, updatedPost).subscribe(() => {
+        this.router.navigate(['/post/index']);
+      });
+    }
   }
 }

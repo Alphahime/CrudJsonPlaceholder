@@ -1,9 +1,7 @@
-<div class="container">
-    <h1>Voir le post</h1>
-    <a href="#" routerLink="/post/index" class="btn btn-primary">Retour</a>
-    <div *ngIf="post">
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.body }}</p>
-    </div>
-  </div>
-  
+<div *ngIf="post">
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.body }}</p>
+</div>
+<div *ngIf="errorMessage">
+  <p>{{ errorMessage }}</p>
+</div>

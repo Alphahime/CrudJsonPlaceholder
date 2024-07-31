@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostService } from '../post.service';
-import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PostService } from '../post.service';
 import { PostNotificationService } from '../post-notification.service';
 
 @Component({
