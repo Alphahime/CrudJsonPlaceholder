@@ -2,6 +2,25 @@
   <h2>{{ post.title }}</h2>
   <p>{{ post.body }}</p>
 </div>
+
 <div *ngIf="errorMessage">
   <p>{{ errorMessage }}</p>
+</div>
+
+<!-- Section des commentaires -->
+<div class="container mt-4">
+  <h3>Commentaires</h3>
+  <div *ngIf="comments.length === 0">
+    <p>Aucun commentaire pour ce post.</p>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let comment of comments">
+      <div class="card comment-card">
+        <div class="card-body">
+          <h5 class="card-title">{{ comment.author }}</h5>
+          <p class="card-text">{{ comment.content }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

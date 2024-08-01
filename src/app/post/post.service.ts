@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Post } from './post';
+import { Comment } from './comment'; // Importez le modèle Comment
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,14 @@ export class PostService {
     return this.httpClient.delete(this.apiURL + '/posts/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
+
+  // Nouvelle méthode pour obtenir les commentaires d'un post
+  getComments(postId: number): Observable<Comment[]> {
+    return this.httpClient.get<Comment[]>(`${this.apiURL}/posts/${postId}/comments`)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  // Vous pouvez également ajouter des méthodes pour créer, mettre à jour ou supprimer des commentaires si nécessaire
 
   errorHandler(error: any) {
     let errorMessage = '';
