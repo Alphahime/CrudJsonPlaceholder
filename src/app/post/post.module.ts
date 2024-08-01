@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importation de CommonModule
-import { ReactiveFormsModule } from '@angular/forms';
-import { EditComponent } from './edit/edit.component';
-import { ViewComponent } from './view/view.component';
-import { PostService } from './post.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; // Importation du RouterModule
+import { IndexComponent } from './index/index.component';
+import { EditComponent } from './edit/edit.component'; // Assure-toi que le composant Edit est importé
 
 @NgModule({
   declarations: [
-    EditComponent,
-    ViewComponent
+    IndexComponent,
+    EditComponent // Déclare également le composant Edit si nécessaire
   ],
   imports: [
-    CommonModule, // Assurez-vous que CommonModule est importé ici
-    ReactiveFormsModule
-  ],
-  providers: [PostService]
+    CommonModule,
+    RouterModule // Ajoute RouterModule aux imports
+  ]
 })
 export class PostModule { }

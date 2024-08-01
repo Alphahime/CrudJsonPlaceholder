@@ -1,20 +1,47 @@
 <div class="container">
-  <h1>Crud Angular</h1>
-  <a href="#" routerLink="/post/create/" class="btn btn-success mb-3">Créer un nouveau post</a>
+  <h1 class="my-4 text-center">CRUD Angular</h1>
 
-  <div class="row">
-    <div class="col-md-3 mb-4" *ngFor="let post of posts">
-      <div class="card h-100">
-        <div class="card-header">
-          <h5 class="card-title">{{ post.title }}</h5>
+  <!-- Formulaire d'ajout -->
+  <div class="card mb-3 form-card">
+    <div class="card-header">
+      <h5>Ajouter un nouveau post</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="addForm" (ngSubmit)="addPost()">
+        <div class="form-group">
+          <label for="title">Titre :</label>
+          <input formControlName="title" id="title" type="text" class="form-control">
+          <div *ngIf="addForm.get('title')?.invalid && (addForm.get('title')?.touched || addForm.get('title')?.dirty)" class="alert alert-danger">
+            <div *ngIf="addForm.get('title')?.errors?.['required']">Le titre est requis.</div>
+          </div>
         </div>
-        <div class="card-body">
-          <p class="card-text">{{ post.body }}</p>
+        <div class="form-group">
+          <label for="body">Corps :</label>
+          <textarea formControlName="body" id="body" class="form-control"></textarea>
+          <div *ngIf="addForm.get('body')?.invalid && (addForm.get('body')?.touched || addForm.get('body')?.dirty)" class="alert alert-danger">
+            <div *ngIf="addForm.get('body')?.errors?.['required']">Le corps est requis.</div>
+          </div>
         </div>
-        <div class="card-footer">
-          <a href="#" [routerLink]="['/post/', post.id, 'view']" class="btn btn-info btn-sm">Voir</a>
-          <a href="#" [routerLink]="['/post/', post.id, 'edit']" class="btn btn-primary btn-sm">Modifier</a>
-          <button type="button" (click)="deletePost(post.id)" class="btn btn-danger btn-sm">Supprimer</button>
+        <button class="btn btn-success" type="submit" [disabled]="addForm.invalid">Ajouter</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Liste des posts -->
+  <div class="container mt-4">
+    <h1 class="text-center">Liste des Posts</h1>
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let post of posts">
+        <div class="card post-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body }}</p>
+            <div class="d-flex justify-content-between">
+              <a [routerLink]="['/post', post.id, 'edit']" class="btn btn-primary">Éditer</a>
+              <a [routerLink]="['/post', post.id, 'view']" class="btn btn-info">Voir les détails</a>
+              <button type="button" (click)="deletePost(post.id)" class="btn btn-danger">Supprimer</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
